@@ -1,0 +1,65 @@
+﻿@model IEnumerable<HotelIntegratedComputerSystems.Models.Admin.EmployeeTypeViewModel>
+@Scripts.Render("~/Scripts/OneFilterPerColumn.js")
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2></h2>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">Employee Types</h3>
+    </div>
+    <table class="table table-hover table-bordered" id="dev-table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.SecurityRankDescription)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PayRate)
+                </th>
+                <th>
+                    @Html.ActionLink("Create New", "Create")
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <input type="text" id="myInput1" onkeyup="filterFunctionColumn3('dev-table', 'myInput1', 'myInput2', 'myInput3')" class="form-control" data-action="filter" placeholder="Filter Security Rank" />
+                </th>
+                <th>
+                    <input type="text" id="myInput2" onkeyup="filterFunctionColumn3('dev-table', 'myInput1', 'myInput2', 'myInput3')" class="form-control" data-action="filter" placeholder="Filter Title" />
+                </th>
+                <th>
+                    <input type="text" id="myInput3" onkeyup="filterFunctionColumn3('dev-table', 'myInput1', 'myInput2', 'myInput3')" class="form-control" data-action="filter" placeholder="Filter Rate" />
+                </th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SecurityRankDescription)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PayRate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
